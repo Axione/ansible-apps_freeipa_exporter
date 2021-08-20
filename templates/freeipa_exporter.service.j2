@@ -1,0 +1,24 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=Prometheus freeipa Exporter
+After=network-online.target
+StartLimitInterval=0
+
+[Service]
+Type=simple
+Restart=always
+ExecStart={{ freeipa_exporter_install_dir }}/freeipa-exporter \
+    --web.listen-address ":{{ freeipa_exporter_listen_port }}" \
+    --ldap.addr "{{ freeipa_exporter_freeipa_url }}" \
+    --ldap.user "{{ freeipa_exporter_freeipa_admin }}" \
+    --ldap.pass {{ freeipa_exporter_freeipa_passwd }} \
+    --ipa-domain {{ freeipa_exporter_freeipa_domain }}
+
+ExecReload=/bin/kill -HUP $MAINPID
+SyslogIdentifier=freeipa-exporter
+RestartSec=1
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

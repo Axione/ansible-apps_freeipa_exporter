@@ -1,0 +1,29 @@
+---
+- name: "Check for freeipa-exporter binary"
+  stat:
+    path: "{{ freeipa_exporter_install_dir }}/freeipa-exporter"
+  changed_when: false
+  register: freeipa_exporter_install
+
+- when: not freeipa_exporter_install.stat.exists or freeipa_exporter_force_install|bool
+  block:
+    - name: "Download freeipa-exporter..."
+      get_url:
+        url: '{{ freeipa_exporter_url }}'
+        dest: '{{ freeipa_exporter_install_dir }}/freeipa-exporter'
+        timeout: '60'
+        mode: '0755'
+
+- name: "Create systemd for freeipa_exporter"
+  template:
+    src: 'freeipa_exporter.service.j2'
+    dest: '/etc/systemd/system/freeipa_exporter.service'
+    mode: '0640'
+  notify: "restart freeipa_exporter"
+
+- name: "Enable and Start freeipa_exporter.service"
+  service:
+    name: freeipa_exporter
+    state: started
+    enabled: true
+    daemon_reload: true

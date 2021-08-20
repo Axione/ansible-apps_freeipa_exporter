@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  author: "Philippe leal"
+  description: "Install and configure freeipa exporter metrics for prometheus"
+  role_name: apps_freeipa_exporter
+  license: "license: Apache License, Version 2.0"
+  min_ansible_version: 2.8
+
+  platforms:
+    - name: "Ubuntu"
+      versions:
+        - "xenial"
+        - "bionic"
+    - name: "Debian"
+      versions:
+        - "buster"
+        - "stretch"
+    - name: "Centos"
+      versions:
+        - "8"
+
+  galaxy_tags:
+    - freeipa
+    - exporter
+    - prometheus
+
+dependencies: []

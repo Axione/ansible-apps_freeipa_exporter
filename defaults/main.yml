@@ -1,0 +1,14 @@
+---
+# Binary install
+freeipa_exporter_version:         "0.1.3-pre"
+freeipa_exporter_url:             "https://github.com/lotusnoir/389ds_exporter/releases/download/v{{ freeipa_exporter_version }}/389ds_exporter"
+freeipa_exporter_install_dir:     "/usr/local/bin"
+freeipa_exporter_force_install:   false
+
+# Systemd options
+freeipa_exporter_loglevel:        ""
+freeipa_exporter_freeipa_admin:   "admin"
+freeipa_exporter_freeipa_passwd:  ""
+freeipa_exporter_freeipa_domain:  ""
+freeipa_exporter_freeipa_url:     "localhost:389"
+freeipa_exporter_listen_port:     "9128"

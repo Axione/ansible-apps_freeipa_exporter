@@ -1,0 +1,5 @@
+---
+- name: "restart freeipa_exporter"
+  service:
+    name: "freeipa_exporter"
+    state: "restarted"
