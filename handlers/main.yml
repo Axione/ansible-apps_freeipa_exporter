@@ -1,5 +1,5 @@
 ---
 - name: "restart freeipa_exporter"
-  service:
+  ansible.builtin.service:
     name: "freeipa_exporter"
     state: "restarted"
