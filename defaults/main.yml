@@ -6,7 +6,7 @@ freeipa_exporter_install_dir: "/usr/local/bin"
 freeipa_exporter_force_install: false
 
 # Systemd options
-freeipa_exporter_loglevel: ""
+#freeipa_exporter_loglevel: ""
 freeipa_exporter_freeipa_admin: "admin"
 freeipa_exporter_freeipa_passwd: ""
 freeipa_exporter_freeipa_domain: ""
